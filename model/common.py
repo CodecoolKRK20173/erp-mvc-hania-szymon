@@ -17,8 +17,29 @@ def generate_random(table):
         string: Random and unique string
     """
 
+  import random
     generated = ''
+    list_of_keys = []
+    id_part1, id_part_2, id_part3, id_part4 = '', '' , '', ''
+    letters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    special_characters = '!@#$%^&*()?'
+    numbers = '1234567890'
+    for i in range(len(table)):
+        list_of_keys.append(table[i][0])
+    #print(list_of_keys)
 
+    id_part1 = id_part1 + random.choice(letters) + random.choice(letters)
+    id_part_2 = id_part_2 + random.choice(special_characters) + random.choice(special_characters)
+    id_part3 = id_part3 + random.choice(numbers) + random.choice(numbers)
+    id_part4 = id_part4 + random.choice(letters) + random.choice(letters)
+    
+    
+    generated = generated + id_part1 + id_part3 + id_part4 + id_part_2
+    
+    while generated in list_of_keys:
+        generated = generated + id_part1 + id_part3 + id_part1 + id_part_2
+    
     # your code
+
 
     return generated
