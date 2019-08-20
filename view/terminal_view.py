@@ -21,6 +21,7 @@ def print_table(table, title_list):
     Returns:
         None: This function doesn't return anything it only prints to console.
     """
+    
 
     # your goes code
 

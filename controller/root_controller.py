@@ -11,8 +11,36 @@ from controller import common
 
 def run():
     options = ["Store manager",
-               "Human resources manager",
-               "Inventory manager",
+               "Human resourcedef add(table, record):
+    table = table.append(record)
+    """
+    Add new record to table
+
+    Args:
+        table (list): table to add new record to
+        record (list): new record
+
+    Returns:
+        list: Table with a new record
+    """
+    # your code
+
+    return tableanager",
+               "Inventory manadef add(table, record):
+    table = table.append(record)
+    """
+    Add new record to table
+
+    Args:
+        table (list): table to add new record to
+        record (list): new record
+
+    Returns:
+        list: Table with a new record
+    """
+    # your code
+
+    return table",
                "Accounting manager",
                "Sales manager",
                "Customer Relationship Management (CRM)"]

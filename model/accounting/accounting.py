@@ -27,7 +27,7 @@ def add(table, record):
     Returns:
         list: Table with a new record
     """
-    # your code
+    table = table.append(record)
 
     return table
 
@@ -44,7 +44,7 @@ def remove(table, id_):
         list: Table without specified record.
     """
 
-    # your code
+    table = table.pop(id_)
 
     return table
 
@@ -62,7 +62,7 @@ def update(table, id_, record):
         list: table with updated record
     """
 
-    # your code
+    table = table.append(record[id_])
 
     return table
 
@@ -80,8 +80,7 @@ def which_year_max(table):
     Returns:
         number
     """
-
-    # your code
+    
 
 
 def avg_amount(table, year):
