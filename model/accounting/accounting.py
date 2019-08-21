@@ -43,9 +43,9 @@ def remove(table, id_):
     Returns:
         list: Table without specified record.
     """
-    for rocords in table:
-        if records[0] == id_:
-            table.remove(records)
+    for record in table:
+        if record[0] == id_:
+            table.remove(record)
 
     return table
 
@@ -82,7 +82,24 @@ def which_year_max(table):
     Returns:
         number
     """
-    
+    years_profits = {}
+    for record in table:
+        if record[3] not in years_profits:
+            years_profits.update({record[3]: 0})
+        if record[4] == 'in':
+            years_profits[record[3]] += record[5]
+        else:
+            years_profits[record[3]] -= record[5]
+
+    """
+    Create a list of the dict's keys and values;
+    Returns:
+    The key with the max value
+    """
+
+    v = list(years_profits.values())
+    k = list(years_profits.keys())
+    return int(k[v.index(max(v))])
 
 
 def avg_amount(table, year):
