@@ -83,8 +83,12 @@ def get_oldest_person(table):
         list: A list of strings (name or names if there are two more with the same value)
     """
 
-    # your code
-
+    
+    years_from_table = [record[2] for record in table ]
+    oldest_year = (min(years_from_table))
+    oldest_people = [record[1] for record in table if record[2] == oldest_year]
+    
+    return oldest_people
 
 def get_persons_closest_to_average(table):
     """
