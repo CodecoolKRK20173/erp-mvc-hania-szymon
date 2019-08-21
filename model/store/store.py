@@ -30,7 +30,6 @@ def add(table, record):
     return table
 
 
-
 def remove(table, id_):
     """
     Remove a record with a given id from the table.
@@ -83,7 +82,13 @@ def get_counts_by_manufacturers(table):
          dict: A dictionary with this structure: { [manufacturer] : [count] }
     """
 
-    # your code
+    dicT = {}
+    for record in table:
+        if record[2] not in dicT:
+            dicT.update({record[2]: 0})
+        else:
+            dicT[record[2]] += 1
+    return dicT
 
 
 def get_average_by_manufacturer(table, manufacturer):
@@ -98,4 +103,11 @@ def get_average_by_manufacturer(table, manufacturer):
          number
     """
 
-    # your code
+    manufacturer_game_count = 0
+    for record in table:
+        if record[2] == manufacturer:
+            manufacturer_game_count += 1
+    games_in_stock = len(table)
+    average = manufacturer_game_count / games_in_stock
+
+    return average

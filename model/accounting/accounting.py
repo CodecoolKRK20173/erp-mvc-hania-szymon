@@ -15,7 +15,6 @@ from model import data_manager
 from model import common
 
 
-
 def add(table, record):
     """
     Add new record to table
@@ -113,5 +112,17 @@ def avg_amount(table, year):
     Returns:
         number
     """
+    year_item_count = 0
+    year_profit = 0
+    for record in table:
+        if record[3] == int(year):
+            if record[4] == 'in':
+                year_item_count += 1
+                year_profit += record[5]
+            else:
+                year_profit -= record[5]
+    average = year_profit / year_item_count
 
-    # your code
+    return average
+
+
