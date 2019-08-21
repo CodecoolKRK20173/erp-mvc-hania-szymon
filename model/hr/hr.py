@@ -24,9 +24,10 @@ def add(table, record):
     Returns:
         list: Table with a new record
     """
-    # your code
+    table.append(record)
 
     return table
+
 
 
 def remove(table, id_):
@@ -41,7 +42,9 @@ def remove(table, id_):
         list: Table without specified record.
     """
 
-    # your code
+    for record in table:
+        if record[0] == id_:
+            table.remove(record)
 
     return table
 
@@ -59,7 +62,9 @@ def update(table, id_, record):
         list: table with updated record
     """
 
-    # your code
+    for index in range(len(table)):
+        if table[index][0] == id_:
+            table[index] = record
 
     return table
 
@@ -78,8 +83,12 @@ def get_oldest_person(table):
         list: A list of strings (name or names if there are two more with the same value)
     """
 
-    # your code
-
+    
+    years_from_table = [record[2] for record in table ]
+    oldest_year = (min(years_from_table))
+    oldest_people = [record[1] for record in table if record[2] == oldest_year]
+    
+    return oldest_people
 
 def get_persons_closest_to_average(table):
     """
@@ -92,4 +101,16 @@ def get_persons_closest_to_average(table):
         list: list of strings (name or names if there are two more with the same value)
     """
 
-    # your code
+   
+    years_from_table = [int(record[2]) for record in table ]
+    sum_of_yeras = 0
+    
+    for i in years_from_table:
+        sum_of_yeras += i
+    
+    average_year = sum_of_yeras/len(years_from_table)
+    year_diference = [abs(average_year - int(record[2])) for record in table]
+    minimal_difference = min(year_diference)
+    average_people = [record[1] for record in table if average_year - int(record[2]) == minimal_difference]
+   
+    return average_people

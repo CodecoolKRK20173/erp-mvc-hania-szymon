@@ -26,7 +26,7 @@ def add(table, record):
     Returns:
         list: Table with a new record
     """
-    # your code
+    table.append(record)
 
     return table
 
@@ -42,8 +42,9 @@ def remove(table, id_):
     Returns:
         list: Table without specified record.
     """
-
-    # your code
+    for record in table:
+        if record[0] == id_:
+            table.remove(record)
 
     return table
 
@@ -61,7 +62,9 @@ def update(table, id_, record):
         list: table with updated record
     """
 
-    # your code
+    for index in range(len(table)):
+        if table[index][0] == id_:
+            table[index] = record
 
     return table
 

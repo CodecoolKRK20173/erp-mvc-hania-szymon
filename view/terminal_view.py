@@ -86,7 +86,13 @@ def get_inputs(list_labels, title):
     """
     inputs = []
 
-    # your code
+    print(title)
+   
+    for item in list_labels:
+        inputs.append(input("{}:".format(item) ))
+
+    
+
 
     return inputs
 

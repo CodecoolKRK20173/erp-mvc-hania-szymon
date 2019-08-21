@@ -25,7 +25,7 @@ def add(table, record):
     Returns:
         list: Table with a new record
     """
-    # your code
+    table.append(record)
 
     return table
 
@@ -41,8 +41,9 @@ def remove(table, id_):
     Returns:
         list: Table without specified record.
     """
-
-    # your code
+    for record in table:
+        if record[0] == id_:
+            table.remove(record)
 
     return table
 
@@ -60,7 +61,9 @@ def update(table, id_, record):
         list: table with updated record
     """
 
-    # your code
+    for index in range(len(table)):
+        if table[index][0] == id_:
+            table[index] = record
 
     return table
 
@@ -79,7 +82,13 @@ def get_counts_by_manufacturers(table):
          dict: A dictionary with this structure: { [manufacturer] : [count] }
     """
 
-    # your code
+    dicT = {}
+    for record in table:
+        if record[2] not in dicT:
+            dicT.update({record[2]: 0})
+        else:
+            dicT[record[2]] += 1
+    return dicT
 
 
 def get_average_by_manufacturer(table, manufacturer):
@@ -94,4 +103,11 @@ def get_average_by_manufacturer(table, manufacturer):
          number
     """
 
-    # your code
+    manufacturer_game_count = 0
+    for record in table:
+        if record[2] == manufacturer:
+            manufacturer_game_count += 1
+    games_in_stock = len(table)
+    average = manufacturer_game_count / games_in_stock
+
+    return average

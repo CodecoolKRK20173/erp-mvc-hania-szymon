@@ -15,7 +15,6 @@ from model import data_manager
 from model import common
 
 
-
 def add(table, record):
     """
     Add new record to table
@@ -27,7 +26,7 @@ def add(table, record):
     Returns:
         list: Table with a new record
     """
-    table = table.append(record)
+    table.append(record)
 
     return table
 
@@ -43,8 +42,9 @@ def remove(table, id_):
     Returns:
         list: Table without specified record.
     """
-
-    table = table.pop(id_)
+    for record in table:
+        if record[0] == id_:
+            table.remove(record)
 
     return table
 
@@ -61,8 +61,9 @@ def update(table, id_, record):
     Returns:
         list: table with updated record
     """
-
-    table = table.append(record[id_])
+    for index in range(len(table)):
+        if table[index][0] == id_:
+            table[index] = record
 
     return table
 
@@ -80,7 +81,24 @@ def which_year_max(table):
     Returns:
         number
     """
-    
+    years_profits = {}
+    for record in table:
+        if record[3] not in years_profits:
+            years_profits.update({record[3]: 0})
+        if record[4] == 'in':
+            years_profits[record[3]] += record[5]
+        else:
+            years_profits[record[3]] -= record[5]
+
+    """
+    Create a list of the dict's keys and values;
+    Returns:
+    The key with the max value
+    """
+
+    v = list(years_profits.values())
+    k = list(years_profits.keys())
+    return int(k[v.index(max(v))])
 
 
 def avg_amount(table, year):
@@ -94,5 +112,17 @@ def avg_amount(table, year):
     Returns:
         number
     """
+    year_item_count = 0
+    year_profit = 0
+    for record in table:
+        if record[3] == int(year):
+            if record[4] == 'in':
+                year_item_count += 1
+                year_profit += record[5]
+            else:
+                year_profit -= record[5]
+    average = year_profit / year_item_count
 
-    # your code
+    return average
+
+
