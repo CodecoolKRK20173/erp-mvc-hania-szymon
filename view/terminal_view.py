@@ -23,7 +23,17 @@ def print_table(table, title_list):
     """
     
 
-    # your goes code
+    from beautifultable import BeautifulTable
+
+    
+    
+    beautiful_table = BeautifulTable()
+    beautiful_table.column_headers = title_list
+    for row in table:
+
+        beautiful_table.append_row(row)
+
+    print(beautiful_table)
 
 
 def print_result(result, label):
@@ -112,4 +122,5 @@ def print_error_message(message):
         None: This function doesn't return anything it only prints to console.
     """
 
-    # your code
+    print("Error: {}".format(message))
+
