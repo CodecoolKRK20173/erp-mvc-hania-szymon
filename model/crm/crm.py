@@ -89,7 +89,6 @@ def get_longest_name_id(table):
     max_characters_in_name = 0
     longest_name = None
     list_of_the_longest = []
-    sort_list = []
     for line in table:
         name_from_table = line[1]
         name_list.append(name_from_table) #list of names
