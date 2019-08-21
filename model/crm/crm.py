@@ -85,7 +85,26 @@ def get_longest_name_id(table):
                 the last by alphabetical order of the names)
         """
 
-    # your code
+    name_list = []
+    max_characters_in_name = 0
+    longest_name = None
+    list_of_the_longest = []
+    for line in table:
+        name_from_table = line[1]
+        name_list.append(name_from_table) #list of names
+    for name in name_list:   
+        if len(name) > max_characters_in_name:
+            max_characters_in_name = len(name) #Number of characters in longest name
+            longest_name = name #the longest name
+    for name in name_list:     
+        if len (name) == len (longest_name):
+            list_of_the_longest.append(name) #the list of longest names
+    the_name_we_are_looking_for = max (list_of_the_longest)    
+    for line in table:
+        if line[1] == the_name_we_are_looking_for:
+            return line[0]
+
+            
 
 
 # the question: Which customers has subscribed to the newsletter?
@@ -100,5 +119,13 @@ def get_subscribed_emails(table):
         Returns:
             list: list of strings (where a string is like "email;name")
         """
-
-    # your code
+    agreed_list = []
+    final_list = []
+    for line in table:
+        agreed_for_emails = line [-1]
+        if agreed_for_emails == '1':
+            agreed_list.append(line) 
+            for person_details in agreed_list:  
+                result = '{};{}'.format(person_details[2], person_details[1])
+                final_list.append(result)
+    return final_list    
