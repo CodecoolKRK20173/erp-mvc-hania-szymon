@@ -101,4 +101,16 @@ def get_persons_closest_to_average(table):
         list: list of strings (name or names if there are two more with the same value)
     """
 
-    # your code
+   
+    years_from_table = [int(record[2]) for record in table ]
+    sum_of_yeras = 0
+    
+    for i in years_from_table:
+        sum_of_yeras += i
+    
+    average_year = sum_of_yeras/len(years_from_table)
+    year_diference = [abs(average_year - int(record[2])) for record in table]
+    minimal_difference = min(year_diference)
+    average_people = [record[1] for record in table if average_year - int(record[2]) == minimal_difference]
+   
+    return average_people
