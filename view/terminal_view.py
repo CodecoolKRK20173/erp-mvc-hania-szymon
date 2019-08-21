@@ -35,7 +35,6 @@ def print_table(table, title_list):
 
     print(beautiful_table)
 
-
 def print_result(result, label):
     """
     Displays results of the special functions.

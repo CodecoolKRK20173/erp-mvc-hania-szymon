@@ -17,7 +17,7 @@ def generate_random(table):
         string: Random and unique string
     """
 
-  import random
+
     generated = ''
     list_of_keys = []
     id_part1, id_part_2, id_part3, id_part4 = '', '' , '', ''
