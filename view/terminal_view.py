@@ -114,6 +114,11 @@ def get_choice(options):
     inputs = get_inputs(["Please enter a number: "], "")
     return inputs[0]
 
+def get_submenu_choice(options):
+    print_menu("Menu",options, "Back to Main Menu")
+    inputs = get_inputs(["Please enter a number: "], "")
+    return inputs[0]
+
 def print_error_message(message):
     """
     Displays an error message (example: ``Error: @message``)

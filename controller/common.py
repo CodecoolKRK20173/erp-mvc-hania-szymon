@@ -88,7 +88,7 @@ def generate_record(table, columns_headers, ask_information, filename):
 
     record.insert(0,id) 
     return record
-#['Month', 'Day', 'Year', 'Type', 'Amount'],"Please provide your personal information"
+
 def adding(table, table_headers, filename, columns_headers, ask_information):
     terminal_view.print_table(table, table_headers)
     record = generate_record(table, columns_headers, ask_information, filename )
