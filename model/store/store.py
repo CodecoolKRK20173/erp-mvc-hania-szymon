@@ -85,7 +85,7 @@ def get_counts_by_manufacturers(table):
     dicT = {}
     for record in table:
         if record[2] not in dicT:
-            dicT.update({record[2]: 0})
+            dicT.update({record[2]: 1})
         else:
             dicT[record[2]] += 1
     return dicT

@@ -115,10 +115,10 @@ def avg_amount(table, year):
     year_item_count = 0
     year_profit = 0
     for record in table:
-        if record[3] == int(year):
-            if record[4] == 'in':
+        if record[3] == int(year):  # record[3] = year
+            if record[4] == 'in':  # record[4] = in/out 
                 year_item_count += 1
-                year_profit += record[5]
+                year_profit += record[5]  #record[5] = amount of transactions in USD
             else:
                 year_profit -= record[5]
     average = year_profit / year_item_count
