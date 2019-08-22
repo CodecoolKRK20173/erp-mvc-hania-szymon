@@ -103,11 +103,11 @@ def get_average_by_manufacturer(table, manufacturer):
          number
     """
 
-    manufacturer_game_count = 0
+    manufacturer_game_count = []
+    
     for record in table:
         if record[2] == manufacturer:
-            manufacturer_game_count += 1
-    games_in_stock = len(table)
-    average = manufacturer_game_count / games_in_stock
+            manufacturer_game_count += int(record[4])
+    average = len(manufacturer_game_count) / sum(manufacturer_game_count)
 
     return average
