@@ -86,7 +86,7 @@ def get_available_items(table):
     current_year = int(date.today().year)
     data_list = []
     for records in table:
-        if (records[3] + records[4]) <= current_year:
+        if int(records[3] + records[4]) <= current_year:
             data_list.append(records)
     return data_list
 
@@ -102,16 +102,16 @@ def get_average_durability_by_manufacturers(table):
         dict: a dictionary with this structure: { [manufacturer] : [avg] }
     """
     manuf_avg = {}
-    all_duration = 0
     for record in table:
         manufacturer = record[2]
-        duration = record[4]
-        all_duration += duration
+        durability = record[4]
         if manufacturer not in manuf_avg:
-            manuf_avg.update({manufacturer: 0})
+            manuf_avg.update({manufacturer: {'sum': 0, 'count': 0}})
         if manufacturer in manuf_avg:
-            manuf_avg[manufacturer] += duration
+            manuf_avg[manufacturer]['sum'] += int(durability)
+            manuf_avg[manufacturer]['count'] += 1
+
     for i in manuf_avg:
-        manuf_avg[i] = round(float(manuf_avg[i]/all_duration), 2)
+        manuf_avg[i] = round(float(manuf_avg[i]['sum']/manuf_avg[i]['count']), 2)
 
     return manuf_avg

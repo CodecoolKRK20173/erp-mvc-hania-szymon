@@ -86,9 +86,9 @@ def which_year_max(table):
         if record[3] not in years_profits:
             years_profits.update({record[3]: 0})
         if record[4] == 'in':
-            years_profits[record[3]] += record[5]
+            years_profits[record[3]] += int(record[5])
         else:
-            years_profits[record[3]] -= record[5]
+            years_profits[record[3]] -= int(record[5])
 
     """
     Create a list of the dict's keys and values;
@@ -115,12 +115,12 @@ def avg_amount(table, year):
     year_item_count = 0
     year_profit = 0
     for record in table:
-        if record[3] == int(year):  # record[3] = year
+        if record[3] == str(year):  # record[3] = year
+            year_item_count += 1
             if record[4] == 'in':  # record[4] = in/out 
-                year_item_count += 1
-                year_profit += record[5]  #record[5] = amount of transactions in USD
+                year_profit += int(record[5])  #record[5] = amount of transactions in USD
             else:
-                year_profit -= record[5]
+                year_profit -= int(record[5])
     average = year_profit / year_item_count
 
     return average
