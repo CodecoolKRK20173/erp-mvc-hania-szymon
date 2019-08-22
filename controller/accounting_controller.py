@@ -38,8 +38,14 @@ def run():
             id = terminal_view.get_inputs(["ID"], "Please insert ID:")
             accounting.remove(table, id[0] )
             terminal_view.print_table(table, table_headers)
-#        elif choice == "3":
-#            inventory_controller.run()
+        elif choice == "3":
+            terminal_view.print_table(table, table_headers)
+            id = terminal_view.get_inputs(["ID"], "Please insert ID:")
+            record = record = terminal_view.get_inputs(['Month', 'Day', 'Year', 'Type', 'Amount'],"Please provide your personal information")
+
+            record.insert(0,id[0])
+            accounting.update(table, id[0], record)
+            terminal_view.print_table(table, table_headers)
 #        elif choice == "4":
 #            accounting_controller.run()
 #        elif choice == "5":
