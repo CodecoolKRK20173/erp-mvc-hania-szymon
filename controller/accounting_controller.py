@@ -3,13 +3,7 @@ from view import terminal_view
 from model.accounting import accounting
 from controller import common
 
-def generate_record(table):
-    table = common.get_table_from_file('model/accounting/items.csv')
-    id = common.generate_random(table)
-    record = terminal_view.get_inputs(['Month', 'Day', 'Year', 'Type', 'Amount'],"Please provide your personal information")
 
-    record.insert(0,id) 
-    return record
 
 
 def run():
@@ -23,30 +17,26 @@ def run():
 
     table_headers = ['ID', 'Month', 'Day', 'Year', 'Type', 'Amount']
     choice = None
-    
+    filename = 'model/accounting/items.csv'
+    columns_headers = ['Month', 'Day', 'Year', 'Type', 'Amount']
+    ask_information = "Please provide your personal information"
+   
+   
     while choice != "0":
         choice = terminal_view.get_choice(['Add', 'Remove', 'Update'])
-        table = common.get_table_from_file('model/accounting/items.csv')
-        if choice[0] == "1":
-            terminal_view.print_table(table, table_headers)
-            record = generate_record(table)
-            accounting.add(table, record)
-            terminal_view.print_table(table, table_headers)
+        table = common.get_table_from_file(filename)
         
-        elif choice[0] == "2":
-            terminal_view.print_table(table, table_headers)
-            id = terminal_view.get_inputs(["ID"], "Please insert ID:")
-            accounting.remove(table, id[0] )
-            terminal_view.print_table(table, table_headers)
-        elif choice == "3":
-            terminal_view.print_table(table, table_headers)
-            id = terminal_view.get_inputs(["ID"], "Please insert ID:")
-            record = record = terminal_view.get_inputs(['Month', 'Day', 'Year', 'Type', 'Amount'],"Please provide your personal information")
+        if choice[0] == "1":
+            common.adding(table, table_headers, filename, columns_headers, ask_information)
 
-            record.insert(0,id[0])
-            accounting.update(table, id[0], record)
-            terminal_view.print_table(table, table_headers)
-#        elif choice == "4":
+        elif choice[0] == "2":
+            common.removing(table, table_headers,  id, filename)
+
+        elif choice == "3":
+            #record = terminal_view.get_inputs(['Month', 'Day', 'Year', 'Type', 'Amount'],"Please provide your personal information")
+            common.updating(table, table_headers, id, filename, columns_headers, ask_information )
+#        
+# elif choice == "4":
 #            accounting_controller.run()
 #        elif choice == "5":
 #            sales_controller.run()

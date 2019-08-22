@@ -2,6 +2,9 @@
 implement commonly used functions here
 """
 import random
+from view import terminal_view
+from model.accounting import accounting
+from controller import common
 def generate_random(table):
     """
     Generates random and unique string. Used for id/key generation:
@@ -58,18 +61,52 @@ def get_table_from_file(file_name):
     table = [element.replace("\n", "").split(";") for element in lines]
     return table
 
-def generate_record(table):
-    table = common.get_table_from_file('model/accounting/items.csv')
+def write_table_to_file(file_name, table):
+    """
+    Writes list of lists into a csv file.
+
+    Args:
+        file_name (str): name of file to write to
+        table (list): list of lists to write to a file
+
+    Returns:
+         None
+    """
+    with open(file_name, "w") as file:
+        for record in table:
+            row = ';'.join(record)
+            file.write(row + "\n")
+
+def get_id_from_user():
+    id = terminal_view.get_inputs(["ID"], "Please insert ID:")
+    return id
+
+def generate_record(table, columns_headers, ask_information, filename):
+    table = common.get_table_from_file(filename)
     id = common.generate_random(table)
-    record = terminal_view.get_inputs(['Month', 'Day', 'Year', 'Type', 'Amount'],"Please provide your personal information")
+    record = terminal_view.get_inputs(columns_headers, ask_information)
 
     record.insert(0,id) 
     return record
+#['Month', 'Day', 'Year', 'Type', 'Amount'],"Please provide your personal information"
+def adding(table, table_headers, filename, columns_headers, ask_information):
+    terminal_view.print_table(table, table_headers)
+    record = generate_record(table, columns_headers, ask_information, filename )
+    accounting.add(table, record)
+    terminal_view.print_table(table, table_headers)
+    common.write_table_to_file(filename, table)
 
-def generate_record(table):
-    table = common.get_table_from_file('model/accounting/items.csv')
-    id = common.generate_random(table)
-    record = terminal_view.get_inputs(['Month', 'Day', 'Year', 'Type', 'Amount'],"Please provide your personal information")
+def removing(table, table_headers, id, filename):
+    terminal_view.print_table(table, table_headers)
+    id = get_id_from_user()
+    accounting.remove(table, id[0] )
+    terminal_view.print_table(table, table_headers)
+    common.write_table_to_file(filename, table)
 
-    record.insert(0,id) 
-    return record
+def updating(table, table_headers, id, filename, columns_headers, ask_information):
+    terminal_view.print_table(table, table_headers)
+    id = get_id_from_user()
+    record = generate_record(table, columns_headers, ask_information, filename)
+    accounting.update(table, id[0], record)
+    terminal_view.print_table(table, table_headers)
+    common.write_table_to_file(filename, table)
