@@ -84,7 +84,26 @@ def get_lowest_price_item_id(table):
          string: id
     """
 
-    # your code
+    price_list = []
+    min_price = 100000
+    list_of_lowest_price_items = []
+    list_of_titles = []
+    for line in table:
+        price = int(line[2])
+        price_list.append(price)
+    for price in price_list:
+        if price < min_price:
+            min_price = price #get the min price from data file
+    for line in table:          
+        if int(line[2]) == min_price:
+            list_of_lowest_price_items.append(line) #list of records with min price
+    for line in list_of_lowest_price_items:        
+        title = line [1]
+        list_of_titles.append(title)
+        the_max_title_we_are_looking_for = max(list_of_titles) # the last title in alpha.
+    for line in table:
+        if line[1] == the_max_title_we_are_looking_for:
+            return line[0]
 
 
 def get_items_sold_between(table, month_from, day_from, year_from, month_to, day_to, year_to):
@@ -104,4 +123,14 @@ def get_items_sold_between(table, month_from, day_from, year_from, month_to, day
         list: list of lists (the filtered table)
     """
 
-    # your code
+    date_from = common.convert_to_date(year_from, month_from, day_from)
+    date_to = common.convert_to_date(year_to, month_to, day_to)
+    list_of_items_sold_in_dates = []
+    for line in table:
+        year = int(line [5])
+        month = int(line [3])
+        day = int(line [4])
+        date_of_item_sold = common.convert_to_date(year, month, day)
+        if date_from < date_of_item_sold and date_of_item_sold > date_to:
+            list_of_items_sold_in_dates.append(line)
+    return list_of_items_sold_in_dates
