@@ -21,7 +21,7 @@ def run():
    
    
     while choice != "0":
-        choice = terminal_view.get_submenu_choice(['Add', 'Remove', 'Update'])
+        choice = terminal_view.get_submenu_choice(['Add', 'Remove', 'Update', 'Get oldest person'])
         table = common.get_table_from_file(filename)
         
         if choice[0] == "1":
@@ -30,3 +30,7 @@ def run():
             common.removing(table, table_headers,  id, filename)
         elif choice == "3":
             common.updating(table, table_headers, id, filename, columns_headers, ask_information )
+        elif choice == "4":
+            terminal_view.print_table(table, table_headers)
+            hr_result = hr.get_oldest_person(table)
+            terminal_view.print_result("The oldest people are/ person is: ", hr_result)

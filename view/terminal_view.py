@@ -35,7 +35,7 @@ def print_table(table, title_list):
 
     print(beautiful_table)
 
-def print_result(result, label):
+def print_result(label, result):
     """
     Displays results of the special functions.
 
@@ -47,7 +47,7 @@ def print_result(result, label):
         None: This function doesn't return anything it only prints to console.
     """
 
-    # your code
+    print("\n{} {}\n".format( label, result))
 
 
 def print_menu(title, list_options, exit_message):
@@ -111,12 +111,12 @@ def get_inputs(list_labels, title):
 
 def get_choice(options):
     print_menu("Main menu",options, "Exit program")
-    inputs = get_inputs(["Please enter a number: "], "")
+    inputs = get_inputs(["Please enter a number "], "")
     return inputs[0]
 
 def get_submenu_choice(options):
     print_menu("Menu",options, "Back to Main Menu")
-    inputs = get_inputs(["Please enter a number: "], "")
+    inputs = get_inputs(["Please enter a number "], "")
     return inputs[0]
 
 def print_error_message(message):
