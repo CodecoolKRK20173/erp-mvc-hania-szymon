@@ -1,6 +1,7 @@
 """ Common functions for models
 implement commonly used functions here
 """
+import datetime
 import random
 
 
@@ -16,7 +17,6 @@ def generate_random(table):
     Returns:
         string: Random and unique string
     """
-
 
     generated = ''
     list_of_keys = []
@@ -43,3 +43,7 @@ def generate_random(table):
 
 
     return generated
+
+def convert_to_date (year,month, day):
+    date = datetime.date(year, month, day)
+    return date
