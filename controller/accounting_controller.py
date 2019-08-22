@@ -3,25 +3,44 @@ from view import terminal_view
 from model.accounting import accounting
 from controller import common
 
+
+
+
 def run():
     """
     Starts this module and displays its menu.
      * User can access default special features from here.
      * User can go back to main menu from here.
-
     Returns:
         None
     """
 
-    print (
-    """\n     Acounting menu \n
-    -------------------------\n
-    [1] Add new record 
-    [2] Remove record 
-    [3] Update record
-    [4] Which year has the highest profit?
-    [5] What is the average (per item) profit in a given year? [(profit)/(items count)]
-    [0] Back to main menu
-    """)
+    table_headers = ['ID', 'Month', 'Day', 'Year', 'Type', 'Amount']
+    choice = None
+    filename = 'model/accounting/items.csv'
+    columns_headers = ['Month', 'Day', 'Year', 'Type', 'Amount']
+    ask_information = "Please provide your personal information"
+   
+   
+    while choice != "0":
+        choice = terminal_view.get_choice(['Add', 'Remove', 'Update'])
+        table = common.get_table_from_file(filename)
+        
+        if choice[0] == "1":
+            common.adding(table, table_headers, filename, columns_headers, ask_information)
 
-run()
+        elif choice[0] == "2":
+            common.removing(table, table_headers,  id, filename)
+
+        elif choice == "3":
+            #record = terminal_view.get_inputs(['Month', 'Day', 'Year', 'Type', 'Amount'],"Please provide your personal information")
+            common.updating(table, table_headers, id, filename, columns_headers, ask_information )
+#        
+# elif choice == "4":
+#            accounting_controller.run()
+#        elif choice == "5":
+#            sales_controller.run()
+#        elif choice == "6":
+#            crm_controller.run()
+#        else:
+#            terminal_view.print_error_message("There is no such choice.")

@@ -10,6 +10,7 @@ Data table structure:
 """
 
 # everything you'll need is imported:
+from datetime import date
 from model import data_manager
 from model import common
 
@@ -28,7 +29,6 @@ def add(table, record):
     table.append(record)
 
     return table
-
 
 
 def remove(table, id_):
@@ -83,8 +83,12 @@ def get_available_items(table):
     Returns:
         list: list of lists (the inner list contains the whole row with their actual data types)
     """
-
-    # your code
+    current_year = int(date.today().year)
+    data_list = []
+    for records in table:
+        if (records[3] + records[4]) <= current_year:
+            data_list.append(records)
+    return data_list
 
 
 def get_average_durability_by_manufacturers(table):
@@ -97,5 +101,17 @@ def get_average_durability_by_manufacturers(table):
     Returns:
         dict: a dictionary with this structure: { [manufacturer] : [avg] }
     """
+    manuf_avg = {}
+    all_duration = 0
+    for record in table:
+        manufacturer = record[2]
+        duration = record[4]
+        all_duration += duration
+        if manufacturer not in manuf_avg:
+            manuf_avg.update({manufacturer: 0})
+        if manufacturer in manuf_avg:
+            manuf_avg[manufacturer] += duration
+    for i in manuf_avg:
+        manuf_avg[i] = round(float(manuf_avg[i]/all_duration), 2)
 
-    # your code
+    return manuf_avg
