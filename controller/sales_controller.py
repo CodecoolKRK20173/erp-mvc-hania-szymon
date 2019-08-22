@@ -21,7 +21,7 @@ def run():
    
    
     while choice != "0":
-        choice = terminal_view.get_submenu_choice(['Add', 'Remove', 'Update'])
+        choice = terminal_view.get_submenu_choice(['Add', 'Remove', 'Update', 'Check lowest price item', 'Check items sold between dates'])
         table = common.get_table_from_file(filename)
         
         if choice[0] == "1":
@@ -30,3 +30,9 @@ def run():
             common.removing(table, table_headers,  id, filename)
         elif choice == "3":
             common.updating(table, table_headers, id, filename, columns_headers, ask_information )
+        elif choice == "4":
+            terminal_view.print_table(table, table_headers)
+            sales_id = sales.get_lowest_price_item_id(table)
+            terminal_view.print_result("The lowest price item id is:", sales_id)
+        #elif choice =="5":
+         #   sales.get_items_sold_between(table, month_from, day_from, year_from, month_to, day_to, year_to)
