@@ -103,14 +103,12 @@ def get_average_by_manufacturer(table, manufacturer):
          number
     """
 
-    # manufacturer_game_sum = 0
-    # manufacturer_game_count = 0
-    # for record in table:
-    #     if record[2] == manufacturer[0]:
-    #         manufacturer_game_sum += int(record[4])
-    #         manufacturer_game_count += 1
-    # print(manufacturer[0])
-    # print(manufacturer_game_count)
-    # print(manufacturer_game_sum)
-    # average = manufacturer_game_sum / len(manufacturer_game_count)
-    return 'milion pincet cebulionow'
+    manufacturer_game_sum = 0
+    manufacturer_game_count = 0
+    for record in table:
+        if record[2] == manufacturer:
+            manufacturer_game_sum += int(record[4])
+            manufacturer_game_count += 1
+    average = round(float(manufacturer_game_sum / manufacturer_game_count), 2)
+    
+    return average
