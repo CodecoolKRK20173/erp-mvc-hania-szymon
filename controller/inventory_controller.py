@@ -14,13 +14,12 @@ def run():
         None
     """
 
-    table_headers = ['ID','Name', 'Manufacturer', 'Purchase Year', 'Durability']
+    table_headers = ['ID', 'Name', 'Manufacturer', 'Purchase Year', 'Durability']
     choice = None
     filename = 'model/inventory/inventory.csv'
     columns_headers = ['Name', 'Manufacturer', 'Purchase Year', 'Durability']
-    ask_information = "Please provide your personal information"
-   
-   
+    ask_information = "Please provide your personal information"    
+
     while choice != "0":
         choice = terminal_view.get_submenu_choice(['Add', 'Remove', 'Update', "Items that have not exceeded their durability yet", "Average durability by manufactirers"])
         table = common.get_table_from_file(filename)

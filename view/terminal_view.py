@@ -47,7 +47,8 @@ def print_result(label, result):
         None: This function doesn't return anything it only prints to console.
     """
 
-    print("\n{} {}\n".format( label, result))
+
+    print("\n{}\n {}\n".format(label, result))
 
 
 def print_menu(title, list_options, exit_message):

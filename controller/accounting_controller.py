@@ -23,7 +23,8 @@ def run():
    
    
     while choice != "0":
-        choice = terminal_view.get_submenu_choice(['Add', 'Remove', 'Update'])
+        choice = terminal_view.get_submenu_choice(['Add', 'Remove', 'Update', 'Which year has the highest profit?',\
+            'What is the average (per item) profit in a given year?'])
         table = common.get_table_from_file(filename)
         
         if choice[0] == "1":
@@ -31,13 +32,15 @@ def run():
         elif choice[0] == "2":
             common.removing(table, table_headers,  id, filename)
         elif choice == "3":
-            common.updating(table, table_headers, id, filename, columns_headers, ask_information )
-#        
-# elif choice == "4":
-#            accounting_controller.run()
-#        elif choice == "5":
-#            sales_controller.run()
-#        elif choice == "6":
-#            crm_controller.run()
-#        else:
-#            terminal_view.print_error_message("There is no such choice.")
+            common.updating(table, table_headers, id, filename, columns_headers, ask_information)        
+        elif choice == "4":
+            terminal_view.print_table(table, table_headers)
+            accounting_result = accounting.which_year_max(table)
+            terminal_view.print_result("The year with the highest profit is: ", accounting_result)
+        elif choice == "5":
+            terminal_view.print_table(table, table_headers)
+            year = terminal_view.get_inputs(['Year'], 'Which year?')
+            result = accounting.avg_amount(table, int(year[0]))
+            terminal_view.print_result('The average profit (per item) in a given year is/are: ', result)
+        else:
+            terminal_view.print_error_message("There is no such choice.")
