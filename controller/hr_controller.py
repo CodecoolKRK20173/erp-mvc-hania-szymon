@@ -34,3 +34,6 @@ def run():
             terminal_view.print_table(table, table_headers)
             hr_result = hr.get_oldest_person(table)
             terminal_view.print_result("The oldest people are/ person is: ", hr_result)
+        elif choice == "5":
+            terminal_view.print_table(table, table_headers)
+            
