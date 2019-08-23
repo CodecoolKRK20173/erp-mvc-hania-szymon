@@ -40,3 +40,5 @@ def run():
             terminal_view.print_table(table, table_headers)
             subscribers = crm.get_subscribed_emails(table)
             terminal_view.print_result('Subscribers: ', subscribers)
+        else:
+            terminal_view.print_error_message("There is no such choice.")

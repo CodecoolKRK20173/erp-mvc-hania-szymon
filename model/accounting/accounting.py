@@ -121,7 +121,7 @@ def avg_amount(table, year):
                 year_profit += int(record[5])  #record[5] = amount of transactions in USD
             else:
                 year_profit -= int(record[5])
-    average = round(float(year_profit/year_item_count), 2)
+    average = round(float(year_profit/year_item_count), 3)
 
     return average
 

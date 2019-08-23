@@ -127,9 +127,9 @@ def get_items_sold_between(table, month_from, day_from, year_from, month_to, day
     date_to = common.convert_to_date(year_to, month_to, day_to)
     list_of_items_sold_in_dates = []
     for line in table:
-        year = int(line [5])
-        month = int(line [3])
-        day = int(line [4])
+        year = int(line[5])
+        month = int(line[3])
+        day = int(line[4])
         date_of_item_sold = common.convert_to_date(year, month, day)
         if date_from < date_of_item_sold and date_of_item_sold > date_to:
             list_of_items_sold_in_dates.append(line)

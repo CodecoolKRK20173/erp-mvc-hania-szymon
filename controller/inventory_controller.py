@@ -38,3 +38,5 @@ def run():
             terminal_view.print_table(table, table_headers)
             average_durability = inventory.get_average_durability_by_manufacturers(table)
             terminal_view.print_result("Average durability by manufactirers:", average_durability)
+        else:
+            terminal_view.print_error_message("There is no such choice.")
