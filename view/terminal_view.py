@@ -1,6 +1,7 @@
 """ Terminal view module """
 
 
+
 def print_table(table, title_list):
     """
     Prints table with data.
@@ -48,7 +49,22 @@ def print_result(label, result):
     """
 
 
-    print("\n{}\n {}\n".format(label, result))
+    value_type_str = isinstance(result, str)
+    value_type_dict = isinstance(result, dict)
+    value_type_list = isinstance(result, list)
+
+    if value_type_str == True:
+        print("☺ ✎ ® \n{}\n {}\n".format(label, result))
+    elif value_type_dict == True:
+        print("\n",label, ":", "\n"  )
+        for key, value in result.items():
+            print("♧ ✓ ☺ ", key, "-", value, )
+        print("\n")
+    elif value_type_list == True:
+        print(label, ":" ,"\n")
+        for item in result:
+            print("⚅ ♔ ♯ ",item)
+        print("\n")
 
 
 def print_menu(title, list_options, exit_message):

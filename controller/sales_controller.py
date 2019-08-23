@@ -33,10 +33,9 @@ def run():
         elif choice == "4":
             terminal_view.print_table(table, table_headers)
             sales_id = sales.get_lowest_price_item_id(table)
-            terminal_view.print_result("The lowest price item id is:", sales_id)
+            terminal_view.print_result("The lowest price item id is", sales_id)
         elif choice == "5":
             terminal_view.print_table(table, table_headers)
             date_list = terminal_view.get_inputs(['month_from', 'day_from', 'year_from', 'month_to', 'day_to', 'year_to'], "Please provide dates information: ")
-            print(date_list)
             sold_list = sales.get_items_sold_between(table, int(date_list[0]), int(date_list[1]), int(date_list[2]), int(date_list[3]), int(date_list[4]), int(date_list[5]) )
-            terminal_view.print_result("The items sold between given dates are:", sold_list)
+            terminal_view.print_result("The items sold between given dates are", list(sold_list))

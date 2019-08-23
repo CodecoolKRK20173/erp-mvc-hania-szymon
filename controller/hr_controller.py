@@ -33,8 +33,8 @@ def run():
         elif choice == "4":
             terminal_view.print_table(table, table_headers)
             hr_result = hr.get_oldest_person(table)
-            terminal_view.print_result("The oldest people are/ person is: ", hr_result)
+            terminal_view.print_result("\nThe oldest people are/ person is", hr_result)
         elif choice == "5":
             terminal_view.print_table(table, table_headers)
             closest_to_average_people = hr.get_persons_closest_to_average(table)
-            terminal_view.print_result("People closest to average age: ", closest_to_average_people)
+            terminal_view.print_result("\nPeople closest to average age", closest_to_average_people)
