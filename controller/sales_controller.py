@@ -38,4 +38,6 @@ def run():
             terminal_view.print_table(table, table_headers)
             date_list = terminal_view.get_inputs(['month_from', 'day_from', 'year_from', 'month_to', 'day_to', 'year_to'], "Please provide dates information: ")
             sold_list = sales.get_items_sold_between(table, int(date_list[0]), int(date_list[1]), int(date_list[2]), int(date_list[3]), int(date_list[4]), int(date_list[5]) )
-            terminal_view.print_result("The items sold between given dates are", list(sold_list))
+            terminal_view.print_result("The items sold between given dates are:", sold_list)
+        else:
+            terminal_view.print_error_message("There is no such choice.")

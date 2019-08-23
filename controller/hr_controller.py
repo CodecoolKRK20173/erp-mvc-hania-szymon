@@ -37,4 +37,6 @@ def run():
         elif choice == "5":
             terminal_view.print_table(table, table_headers)
             closest_to_average_people = hr.get_persons_closest_to_average(table)
-            terminal_view.print_result("\nPeople closest to average age", closest_to_average_people)
+            terminal_view.print_result("People closest to average age: ", closest_to_average_people)
+        else:
+            terminal_view.print_error_message("There is no such choice.")

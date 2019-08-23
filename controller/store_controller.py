@@ -40,6 +40,7 @@ def run():
         elif choice == "5":
             terminal_view.print_table(table, table_headers)
             manufacturer = terminal_view.get_inputs(['Manufacturer'], 'Which manufacturer?')
-            games_average = store.get_average_by_manufacturer(table, manufacturer)
+            games_average = store.get_average_by_manufacturer(table, manufacturer[0])
             terminal_view.print_result('Avarage amount in stock: ', games_average)
-
+        else:
+            terminal_view.print_error_message("There is no such choice.")
