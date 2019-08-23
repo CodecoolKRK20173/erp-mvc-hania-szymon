@@ -54,7 +54,7 @@ def print_result(label, result):
     value_type_list = isinstance(result, list)
 
     if value_type_str == True:
-        print("☺ ✎ ® \n{}\n {}\n".format(label, result))
+        print("☺ ✎ ® {}\n {}\n".format(label, result))
     elif value_type_dict == True:
         print("\n",label, ":", "\n"  )
         for key, value in result.items():

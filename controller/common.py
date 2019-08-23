@@ -5,6 +5,7 @@ import random
 from view import terminal_view
 from model.accounting import accounting
 from controller import common
+import os
 def generate_random(table):
     """
     Generates random and unique string. Used for id/key generation:
@@ -110,3 +111,13 @@ def updating(table, table_headers, id, filename, columns_headers, ask_informatio
     accounting.update(table, id[0], record)
     terminal_view.print_table(table, table_headers)
     common.write_table_to_file(filename, table)
+
+def clear_terminal():
+    os.system("clear")
+
+def print_art(a):
+    with open('controller/pictures.txt', 'r') as f:
+        file = f.read()
+        artpics = file.split(',')
+        print(artpics[0])
+    return artpics[a]

@@ -16,21 +16,29 @@ def run():
                "Accounting manager",
                "Sales manager",
                "Customer Relationship Management (CRM)"]
-
+    
+    common.print_art(0)
     choice = None
     while choice != "0":
+        common.clear_terminal()
+        common.print_art(0)
         choice = terminal_view.get_choice(options)
         if choice == "1":
+            common.clear_terminal()
             store_controller.run()
         elif choice == "2":
+            common.clear_terminal()
             hr_controller.run()
         elif choice == "3":
+            common.clear_terminal()
             inventory_controller.run()
         elif choice == "4":
+            common.clear_terminal()
             accounting_controller.run()
         elif choice == "5":
+            common.clear_terminal()
             sales_controller.run()
         elif choice == "6":
+            common.clear_terminal()
             crm_controller.run()
-        else:
-            terminal_view.print_error_message("There is no such choice.")
+        

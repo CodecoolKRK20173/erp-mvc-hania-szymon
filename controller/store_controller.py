@@ -20,7 +20,7 @@ def run():
     columns_headers = ['Title', 'Manufacturer', 'Price', 'In Stock']
     ask_information = "Please provide your personal information"
    
-   
+    common.print_art(0)
     while choice != "0":
         choice = terminal_view.get_submenu_choice(['Add', 'Remove', 'Update',\
             'How many different kinds of game are available of each manufacturer?',\
@@ -28,19 +28,25 @@ def run():
         table = common.get_table_from_file(filename)
         
         if choice[0] == "1":
+            common.clear_terminal()
             common.adding(table, table_headers, filename, columns_headers, ask_information)
         elif choice[0] == "2":
+            common.clear_terminal()
             common.removing(table, table_headers,  id, filename)
         elif choice == "3":
+            common.clear_terminal()
             common.updating(table, table_headers, id, filename, columns_headers, ask_information)
         elif choice == "4":
+            common.clear_terminal()
             terminal_view.print_table(table, table_headers)
             games_count = store.get_counts_by_manufacturers(table)
             terminal_view.print_result('Manufacturer', games_count)
         elif choice == "5":
+            common.clear_terminal()
             terminal_view.print_table(table, table_headers)
             manufacturer = terminal_view.get_inputs(['Manufacturer'], 'Which manufacturer?')
             games_average = store.get_average_by_manufacturer(table, manufacturer[0])
             terminal_view.print_result('Avarage amount in stock: ', games_average)
-        else:
+        elif int(choice) >= 6:
+            common.clear_terminal()
             terminal_view.print_error_message("There is no such choice.")
