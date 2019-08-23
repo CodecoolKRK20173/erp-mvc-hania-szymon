@@ -147,5 +147,5 @@ def print_error_message(message):
         None: This function doesn't return anything it only prints to console.
     """
 
-    print("☠ ☠ ☠ ☠ ☠ ☠ ☠ ☠ ☠ ☠\nError: {}☠ ☠ ☠ ☠ ☠ ☠ ☠ ☠ ☠ ☠".format(message))
+    print("☠ ☠ ☠ ☠ ☠ ☠ ☠ ☠ ☠ ☠ ☠ ☠ ☠ ☠ ☠ ☠\nError: {}\n☠ ☠ ☠ ☠ ☠ ☠ ☠ ☠ ☠ ☠ ☠ ☠ ☠ ☠ ☠ ☠".format(message))
 
