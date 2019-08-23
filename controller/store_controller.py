@@ -36,7 +36,7 @@ def run():
         elif choice == "4":
             terminal_view.print_table(table, table_headers)
             games_count = store.get_counts_by_manufacturers(table)
-            terminal_view.print_result('{Manufacturer: count}', games_count)
+            terminal_view.print_result('Manufacturer', games_count)
         elif choice == "5":
             terminal_view.print_table(table, table_headers)
             manufacturer = terminal_view.get_inputs(['Manufacturer'], 'Which manufacturer?')
